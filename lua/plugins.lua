@@ -41,7 +41,7 @@ return require('packer').startup(function(use)
     ---------------------------------------
     use { 'williamboman/mason.nvim' }
     use { 'williamboman/mason-lspconfig.nvim'}
-    --use { 'neovim/nvim-lspconfig' }
+    use { 'neovim/nvim-lspconfig' }
     use 'tanvirtin/monokai.nvim'
     use { 'hrsh7th/nvim-cmp', config = [[require('config.nvim-cmp')]] }    
     use { 'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp' } 
