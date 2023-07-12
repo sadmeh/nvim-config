@@ -1,6 +1,6 @@
 -- Hint: use `:h <option>` to figure out the meaning if needed
 vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
-vim.opt.mouse = 'a'                 -- allow the mouse to be used in Nvim
+-- vim.opt.mouse = 'a'                 -- allow the mouse to be used in Nvim
 
 -- Tab
 vim.opt.tabstop = 4                 -- number of visual spaces per TAB
@@ -21,13 +21,24 @@ vim.opt.incsearch = true            -- search as characters are entered
 vim.opt.hlsearch = false            -- do not highlight matches
 vim.opt.ignorecase = true           -- ignore case in searches by default
 vim.opt.smartcase = true            -- but make it case sensitive if an uppercase is entered
-
--- Enable clipboard support
-vim.o.clipboard = "unnamedplus"
+-- Enable clipboard support for Windows
+if vim.fn.has('win32') == 1 then
+    vim.opt.clipboard = 'unnamed'
+end
 
 -- Use the system clipboard for all yank, delete, and put commands
-vim.cmd([[set clipboard^=unnamed,unnamedplus]])
-
--- Set the path to the win32yank executable
-vim.env.WIN32YANK = "win32yank.exe"
-
+vim.cmd([[set clipboard^=unnamedplus]])
+if vim.fn.has('win32') == 1 then
+    vim.g.clipboard = {
+     name = 'WslClipboard',
+     copy = {
+     ["+"] = 'clip.exe',
+     ["*"] = 'clip.exe',
+     },
+     paste = {
+     ["+"] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+     ["*"] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+    },
+     cache_enabled = 0,
+     }
+end

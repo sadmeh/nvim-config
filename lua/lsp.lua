@@ -14,6 +14,21 @@ require('mason-lspconfig').setup({
 })
 
 local lspconfig = require('lspconfig')
+-- Configure ESLint LSP
+lspconfig.eslint.setup({
+  on_attach = function(client)
+    -- Set up your custom on_attach function for ESLint LSP
+    print('ESLint LSP started!')
+  end
+})
+
+-- Configure tsserver (TypeScript) LSP
+lspconfig.tsserver.setup({
+  on_attach = function(client)
+    -- Set up your custom on_attach function for tsserver (TypeScript) LSP
+    print('tsserver (TypeScript) LSP started!')
+  end
+})
 
 -- Customized on_attach function
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
