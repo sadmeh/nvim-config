@@ -1,4 +1,3 @@
-print('hello from plugins.lua')
 -- Install Packer automatically if it's not installed(Bootstraping)
 -- Hint: string concatenation is done by `..`
 local ensure_packer = function()

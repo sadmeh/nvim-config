@@ -11,7 +11,7 @@ wk.register({
   ["<leader>"] = {
     c = {
       name = "Config",
-      r = { "<cmd>source $MYVIMRC<CR>", "Reload Config" },
+      r = { "<cmd>luafile $MYVIMRC<CR>", "Reload Config" },
       e = { "<cmd>edit $MYVIMRC<CR>", "Edit Config" },
     },
     f = {
