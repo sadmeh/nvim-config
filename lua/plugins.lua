@@ -49,14 +49,22 @@ return require('packer').startup(function(use)
     use { 'hrsh7th/cmp-cmdline', after = 'nvim-cmp' }       -- cmdline auto-completion
     use 'L3MON4D3/LuaSnip'
     use 'saadparwaiz1/cmp_luasnip'
-    use 'nvim-tree/nvim-web-devicons'
-    use {
-      'nvim-telescope/telescope.nvim', tag = '0.1.2', requires = { {'nvim-lua/plenary.nvim'} }
-    }
+    use { 'nvim-tree/nvim-web-devicons'}
+
+    use {'nvim-lualine/lualine.nvim'}
+    use {'nvim-lua/plenary.nvim'} 
+    use { 'nvim-telescope/telescope.nvim' }
     use 'nvim-telescope/telescope-file-browser.nvim'
     use 'nvim-telescope/telescope-project.nvim'
     use 'folke/which-key.nvim'
+    use {
+        'numToStr/Comment.nvim',
+        config = function()
+            require('Comment').setup()
+        end
+    }   
     use {'nvim-lua/completion-nvim'}
+    use { 'jose-elias-alvarez/null-ls.nvim'}
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if packer_bootstrap then
@@ -64,4 +72,4 @@ return require('packer').startup(function(use)
     end
 end)
 
-
+-- require('lualine').setup()
